@@ -8,7 +8,8 @@ class App extends Component {
   render() {
     return (
       <div>
-          <TimerContainer />
+          <TimerContainer updateInterval={33} />
+          <TimerContainer updateInterval={1000} />
       </div>
     );
   }
