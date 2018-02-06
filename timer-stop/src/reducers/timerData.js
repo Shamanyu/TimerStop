@@ -13,13 +13,26 @@ export default function timerData(state=settings.initialStates.timerData, action
   switch(action.type) {
 
     case START_TIMER:
-      return state;
+      return {
+        ...state,
+        baseTime: action.baseTime,
+        startedAt: action.now,
+        stoppedAt: undefined
+      };
 
-    case START_TIMER:
-      return state;
+    case STOP_TIMER:
+      return {
+        ...state,
+        stoppedAt: action.now
+      };
 
-    case START_TIMER:
-      return state;
+    case RESET_TIMER:
+      return {
+        ...state,
+        baseTime: 0,
+        startedAt: state.startedAt ? action.now : undefined,
+        stoppedAt: state.stoppedAt ? action.now : undefined
+      };
 
     default:
       return state;
